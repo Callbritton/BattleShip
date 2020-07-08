@@ -16,7 +16,7 @@ class Ship
 
   end
 
-  def sink?
+  def sunk?
     @health == 0
   end
 end
