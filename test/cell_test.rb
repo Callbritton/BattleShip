@@ -12,6 +12,13 @@ class CellTest < Minitest::Test
 
   end
 
+  def test_cognizant_of_empty?
+    cell = Cell.new('B4')
+    
+    assert_equal true, cell.empty?
+
+  end
+
 
   def test_ship_occupies_cell
       cell = Cell.new('B4')
@@ -25,4 +32,6 @@ class CellTest < Minitest::Test
       assert_equal false, cell.empty?
 
   end
+
+
 end
