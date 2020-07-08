@@ -13,5 +13,16 @@ class CellTest < Minitest::Test
   end
 
 
+  def test_ship_occupies_cell
+      cell = Cell.new('B4')
+      cruiser = Ship.new('Crusier', 3)
 
+
+      assert_equal true, cell.empty?
+
+      cell.place_ship(cruiser)
+
+      assert_equal false, cell.empty?
+
+  end
 end
