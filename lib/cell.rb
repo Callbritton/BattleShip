@@ -33,7 +33,7 @@ class Cell
   end
 
   def render(variable = nil)
-    if @shot_at == false
+    if !@shot_at #== false - refactored this to be more tidy!
       "."
     elsif !@ship
       "M"
