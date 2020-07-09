@@ -5,6 +5,7 @@ require_relative '../lib/ships'
 class ShipTest < Minitest::Test
 
   def test_it_exists
+    # skip
     ship = Ship.new('Crusier', 3)
 
     assert_instance_of Ship, ship
@@ -13,6 +14,7 @@ class ShipTest < Minitest::Test
 
 
   def test_it_has_a_name
+    # skip
     ship = Ship.new('Crusier', 3)
 
     assert_equal 'Crusier', ship.name
@@ -20,6 +22,7 @@ class ShipTest < Minitest::Test
   end
 
   def test_it_has_health
+    # skip
     ship1 = Ship.new('Crusier', 3)
     ship2 = Ship.new('Sub', 2)
 
@@ -29,6 +32,7 @@ class ShipTest < Minitest::Test
   end
 
   def test_it_can_take_a_hit
+    # skip
     ship = Ship.new('Crusier', 3)
 
     ship.hit
@@ -40,6 +44,7 @@ class ShipTest < Minitest::Test
   end
 
   def test_it_can_sink
+    # skip
     ship = Ship.new('Crusier', 3)
 
     ship.hit
@@ -49,7 +54,7 @@ class ShipTest < Minitest::Test
     ship.hit
     assert_equal 0, ship.health
 
-    assert_equal true, ship.sink?
+    assert_equal true, ship.sunk?
   end
 
 end
