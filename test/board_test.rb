@@ -25,13 +25,21 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_add_cells
-    #skip
+    # skip
     board = Board.new
 
     board.cells["D5"] = Cell.new("D5")
     assert_equal true, board.valid_coordinate?("D5")
   end
 
-  # Test on the board_test file as well!
+  def test_it_can_check_for_valid_placement
+    skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    assert_equal false, board.valid_placement?(cruiser, ["A1", "A2"])
+
+  end
 
 end

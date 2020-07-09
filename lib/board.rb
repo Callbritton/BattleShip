@@ -14,10 +14,12 @@ attr_reader :cells
   end
 
   def valid_coordinate?(coordinate)
-    self.cells.key?(coordinate)
+    cells.key?(coordinate)
   end
 
-  # Test if this push/pull works!
-  #LOOK here!
+  def valid_placement?(ship, coordinates)
+    require "pry"; binding.pry
+    cells.coordinate == ship.length
+  end
 
 end

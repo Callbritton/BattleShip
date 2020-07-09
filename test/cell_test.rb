@@ -28,6 +28,7 @@ class CellTest < Minitest::Test
     assert_equal true, cell.empty?
     cell.place_ship(cruiser)
     assert_equal false, cell.empty?
+    assert_equal cruiser, cell.place_ship(cruiser)
   end
 
 
@@ -79,8 +80,8 @@ class CellTest < Minitest::Test
     cell_1 = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell_2 = Cell.new("C4")
-    sub = Ship.new("Sub", 2)
-    cell_2.place_ship(sub)
+    submarine = Ship.new("Submarine", 2)
+    cell_2.place_ship(submarine)
     cell_1.fire_upon
     assert_equal "M", cell_1.render
   end
@@ -99,4 +100,4 @@ class CellTest < Minitest::Test
   end
 end
 
-# to be deleted. For commit purposes. 
+# to be deleted. For commit purposes.
