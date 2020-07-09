@@ -58,3 +58,5 @@ class ShipTest < Minitest::Test
   end
 
 end
+
+# for commit purposes

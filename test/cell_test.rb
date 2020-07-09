@@ -98,3 +98,5 @@ class CellTest < Minitest::Test
     assert_equal true, cruiser.sunk?
   end
 end
+
+# to be deleted. For commit purposes. 
