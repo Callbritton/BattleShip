@@ -32,4 +32,6 @@ class BoardTest < Minitest::Test
     assert_equal true, board.valid_coordinate?("D5")
   end
 
+  # Test on the board_test file as well!
+
 end

@@ -17,4 +17,7 @@ attr_reader :cells
     self.cells.key?(coordinate)
   end
 
+  # Test if this push/pull works!
+  #LOOK here!
+
 end
