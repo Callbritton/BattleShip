@@ -32,28 +32,29 @@ class Cell
     end
   end
 
-  # def render
-  #   case @shot_at
-  #   when !@shot_at
-  #     "."
-  #   when empty?
-  #     "H"
-  #   when !empty?
-  #     "M"
-  #   when ship.sunk?
-  #     "X"
-  #   end
-  # end
-
-  def render
-    if @ship.sunk?
-      "X"
-    elsif !@shot_at
+  def render(variable = nil)
+    if @shot_at == false
       "."
-    elsif empty?
+    elsif !@ship
       "M"
-    else !empty?
+    elsif @ship && ship.health > 0
       "H"
+    elsif ship.sunk?
+      "X"
     end
   end
 end
+
+#   def render
+#     case @shot_at
+#     when @shot_at
+#       "."
+#     when ship.hit
+#       "H"
+#     when !@shot_at
+#       "M"
+#     when ship.sunk?
+#       "X"
+#     end
+#   end
+# end
