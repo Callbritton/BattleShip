@@ -44,7 +44,7 @@ class ShipTest < Minitest::Test
   end
 
   def test_it_can_sink
-    # skip 
+    # skip
     ship = Ship.new('Crusier', 3)
 
     ship.hit
