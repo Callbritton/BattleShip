@@ -31,4 +31,29 @@ class Cell
       @miss = false
     end
   end
+
+  # def render
+  #   case @shot_at
+  #   when !@shot_at
+  #     "."
+  #   when empty?
+  #     "H"
+  #   when !empty?
+  #     "M"
+  #   when ship.sunk?
+  #     "X"
+  #   end
+  # end
+
+  def render
+    if @ship.sunk?
+      "X"
+    elsif !@shot_at
+      "."
+    elsif empty?
+      "M"
+    else !empty?
+      "H"
+    end
+  end
 end
