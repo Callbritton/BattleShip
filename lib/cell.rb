@@ -21,8 +21,7 @@ class Cell
   end
 
   def fire_upon
-    case @ship
-    when nil
+    if @ship == nil # converted this back to a proper if statement 
       @shot_at = true
       @miss = true
     else
@@ -44,17 +43,3 @@ class Cell
     end
   end
 end
-
-#   def render
-#     case @shot_at
-#     when @shot_at
-#       "."
-#     when ship.hit
-#       "H"
-#     when !@shot_at
-#       "M"
-#     when ship.sunk?
-#       "X"
-#     end
-#   end
-# end
