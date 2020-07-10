@@ -63,7 +63,7 @@ class BoardTest < Minitest::Test
     submarine = Ship.new("Submarine", 2)
 
     coordinates = ["A1", "A2", "A3", "A4"]
-
+require "pry"; binding.pry
     assert_equal ["A", "A", "A", "A"], board.seperate_by_letter(coordinates)
   end
 
