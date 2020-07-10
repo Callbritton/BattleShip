@@ -67,7 +67,7 @@ class BoardTest < Minitest::Test
     assert_equal ["A", "A", "A", "A"], board.seperate_by_letter(coordinates)
   end
 
-  def test_it_can_seperate_by_letter
+  def test_it_can_seperate_by_number
     #skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
