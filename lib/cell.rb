@@ -21,7 +21,7 @@ class Cell
   end
 
   def fire_upon
-    if @ship == nil # converted this back to a proper if statement 
+    if @ship == nil # converted this back to a proper if statement
       @shot_at = true
       @miss = true
     else
@@ -31,8 +31,8 @@ class Cell
     end
   end
 
-  def render(variable = nil)
-    if !@shot_at #== false - refactored this to be more tidy!
+  def render(variable = false)
+    if !@shot_at
       "."
     elsif !@ship
       "M"
