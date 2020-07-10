@@ -18,8 +18,27 @@ attr_reader :cells
   end
 
   def valid_placement?(ship, coordinates)
-    require "pry"; binding.pry
-    cells.coordinate == ship.length
+    coordinates.length == ship.length
   end
+
+  #This splits our coordinates!
+  def split_coordinates(coordinates)
+    coordinates.map do |coordinate|
+      coordinate.split('')
+    end
+  end
+
+  #This will seperate our split coordinates into letters.
+  def seperate_by_letter(coordinates)
+    split_coordinates(coordinates).map {|coordinate| coordinate[0]}
+  end
+
+  # This will seperate our split coordinates into numbers - added .to_i as it
+  # was returning strings.
+  def seperate_by_number(coordinates)
+    split_coordinates(coordinates).map {|coordinate| coordinate[1].to_i}
+  end
+
+
 
 end

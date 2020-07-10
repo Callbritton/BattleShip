@@ -14,7 +14,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_validate_coordinates
-    #skip
+    # skip
     board = Board.new
 
     assert_equal true, board.valid_coordinate?("A1")
@@ -33,13 +33,49 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_check_for_valid_placement
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
-    assert_equal false, board.valid_placement?(cruiser, ["A1", "A2"])
+    coordinates = ["A1", "A2"]
 
+    assert_equal false, board.valid_placement?(cruiser, coordinates)
+    assert_equal true, board.valid_placement?(submarine, coordinates)
+
+  end
+
+  def test_coordinates_are_split
+    # skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "A2", "A3", "A4"]
+
+    assert_equal [["A", "1"], ["A", "2"], ["A", "3"], ["A", "4"]], board.split_coordinates(coordinates)
+  end
+
+  def test_it_can_seperate_by_letter
+    #skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "A2", "A3", "A4"]
+
+    assert_equal ["A", "A", "A", "A"], board.seperate_by_letter(coordinates)
+  end
+
+  def test_it_can_seperate_by_letter
+    #skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "A2", "A3", "A4"]
+
+    assert_equal [1, 2, 3, 4], board.seperate_by_number(coordinates)
   end
 
 end
