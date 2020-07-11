@@ -2,6 +2,7 @@ class Board
 attr_reader :cells
   def initialize
     @cells = make_cells
+
   end
 
   def make_cells
@@ -18,12 +19,14 @@ attr_reader :cells
   end
 
   def valid_placement?(ship, coordinates)
-    coordinates.length == ship.length && valid_row_placement?(coordinates)
+    coordinates.length == ship.length &&
+      (valid_row_placement?(coordinates) && valid_column_spacing?(coordinates)) ||
+      (valid_column_placement?(coordinates) && valid_row_spacing?(coordinates))
   end
 
   #This splits our coordinates!
   def split_coordinates(coordinates)
-    coordinates.map do |coordinate|
+      coordinates.map do |coordinate|
       coordinate.split('')
     end
   end
@@ -52,11 +55,42 @@ attr_reader :cells
     return true
   end
 
+  def valid_column_spacing?(coordinates)
+    split = split_coordinates(coordinates)
+    split.each_with_index do |current_coordinate, index|
+      if index != 0 #if we are on the first element we haven't navigated a space yet.
+        previous_coordinate = split[index - 1]
+        previous_column = previous_coordinate[1].ord
+        current_column = current_coordinate[1].ord
+        if previous_column - current_column != -1
+          return false
+        end
+      end
+    end
+    return true
+  end
+
+  def valid_row_spacing?(coordinates)
+    split = split_coordinates(coordinates)
+    split.each_with_index do |current_coordinate, index|
+      if index != 0
+        previous_coordinate = split[index - 1]
+        previous_row = previous_coordinate[0].ord
+        current_row = current_coordinate[0].ord
+        if previous_row - current_row != -1
+          return false
+        end
+      end
+    end
+    return true
+  end
+end
+
   # This will seperate our split coordinates into letters.
   def seperate_by_rows(coordinates)
     split_coordinates(coordinates).map { |coordinate| coordinate[0] }
   end
-
+  
   # This will seperate our split coordinates into numbers - added .to_i as it
   # was returning strings.
   def seperate_by_columns(coordinates)
@@ -71,7 +105,3 @@ attr_reader :cells
   def check_in_columns(coordinates)
     seperate_by_columns(coordinates).all? { |column| seperate_by_columns(coordinates)[1] == column }
   end
-
-
-
-end
