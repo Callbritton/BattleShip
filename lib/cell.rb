@@ -45,9 +45,9 @@ class Cell
     elsif !@ship
       "M"
     elsif @ship && ship.health > 0
-      "H"
+      "H"  # visually appealing 💥
     elsif ship.sunk?
-      "X"
+      "X"  # visually appealing ☠️
     end
   end
 end
