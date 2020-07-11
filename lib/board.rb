@@ -18,7 +18,7 @@ attr_reader :cells
   end
 
   def valid_placement?(ship, coordinates)
-    coordinates.length == ship.length
+    coordinates.length == ship.length && valid_row_placement?(coordinates)
   end
 
   #This splits our coordinates!
@@ -28,25 +28,50 @@ attr_reader :cells
     end
   end
 
+  def valid_row_placement?(coordinates)
+    split = split_coordinates(coordinates)
+    coordinate = split[0]
+    row = coordinate[0]
+    split.each do |coordinate|
+      if row != coordinate[0]
+        return false
+      end
+    end
+    return true
+  end
+
+  def valid_column_placement?(coordinates)
+    split = split_coordinates(coordinates)
+    coordinate = split[1]
+    column = coordinate[1]
+    split.each do |coordinate|
+      if column != coordinate[1]
+        return false
+      end
+    end
+    return true
+  end
+
   # This will seperate our split coordinates into letters.
-  def seperate_by_letter(coordinates)
+  def seperate_by_rows(coordinates)
     split_coordinates(coordinates).map { |coordinate| coordinate[0] }
   end
 
   # This will seperate our split coordinates into numbers - added .to_i as it
   # was returning strings.
-  def seperate_by_number(coordinates)
+  def seperate_by_columns(coordinates)
     split_coordinates(coordinates).map { |coordinate| coordinate[1].to_i }
   end
 
   # This will evaluate true/false if all? are letters:
-  def check_is_all_letters(coordinates)
-    seperate_by_letter(coordinates).all? { |letter| seperate_by_letter(coordinates)[0] == letter }
+  def check_in_rows(coordinates)
+    seperate_by_rows(coordinates).all? { |row| seperate_by_rows(coordinates)[0] == row }
   end
   # This will evaluate true/false if all? are numbers:
-  def check_is_all_numbers(coordinates)
-    seperate_by_number(coordinates).all? { |number| seperate_by_numbers(coordinates)[1] == number }
+  def check_in_columns(coordinates)
+    seperate_by_columns(coordinates).all? { |column| seperate_by_columns(coordinates)[1] == column }
   end
+
 
 
 end

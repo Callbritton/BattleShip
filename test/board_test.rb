@@ -7,14 +7,14 @@ require './lib/board'
 class BoardTest < Minitest::Test
 
   def test_it_exists
-    # skip
+    skip
     board = Board.new
 
     assert_instance_of Board, board
   end
 
   def test_it_can_validate_coordinates
-    # skip
+    skip
     board = Board.new
 
     assert_equal true, board.valid_coordinate?("A1")
@@ -25,7 +25,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_add_cells
-    # skip
+    skip
     board = Board.new
 
     board.cells["D5"] = Cell.new("D5")
@@ -33,7 +33,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_check_for_valid_placement
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -46,7 +46,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_coordinates_are_split
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -56,26 +56,80 @@ class BoardTest < Minitest::Test
     assert_equal [["A", "1"], ["A", "2"], ["A", "3"], ["A", "4"]], board.split_coordinates(coordinates)
   end
 
-  def test_it_can_seperate_by_letter
+  def test_it_is_in_singular_row
     #skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
     coordinates = ["A1", "A2", "A3", "A4"]
-require "pry"; binding.pry
-    assert_equal ["A", "A", "A", "A"], board.seperate_by_letter(coordinates)
+
+    assert_equal true, board.valid_row_placement?(coordinates)
+
+    coordinates = ["A1", "A2", "B3", "A4"]
+
+    assert_equal false, board.valid_row_placement?(coordinates)
+
   end
 
-  def test_it_can_seperate_by_number
+  def test_it_is_in_singular_column
     #skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "B1", "C1", "D1"]
+
+    assert_equal true, board.valid_column_placement?(coordinates)
+
+    coordinates = ["A1", "A2", "B3", "A4"]
+
+    assert_equal false, board.valid_column_placement?(coordinates)
+
+  end
+
+  def test_it_can_seperate_by_rows
+    skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "A2", "A3", "A4"]
+    assert_equal ["A", "A", "A", "A"], board.seperate_by_rows(coordinates)
+  end
+
+  def test_it_can_seperate_by_columns
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
     coordinates = ["A1", "A2", "A3", "A4"]
 
-    assert_equal [1, 2, 3, 4], board.seperate_by_number(coordinates)
+    assert_equal [1, 2, 3, 4], board.seperate_by_columns(coordinates)
+  end
+
+  def test_all_rows_numbers_are_the_same
+    skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "A2", "A3", "A4"]
+
+
+    assert_equal true, board.check_in_rows(coordinates)
+  end
+
+  def test_all_columns_numbers_are_the_same
+    skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+
+    coordinates = ["A1", "B1", "C1", "D1"]
+
+    assert_equal true, board.check_in_columns(coordinates)
   end
 
   def test_coordinates_are_consecutive
@@ -98,6 +152,15 @@ require "pry"; binding.pry
 
     assert_equal false, board.valid_placement?(cruiser, ["A1", "B2", "C3"])
     assert_equal false, board.valid_placement?(submarine, ["C2", "D3"])
+  end
+
+  def test_it_can_place_a_ship
+    skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+
+    # (cruiser, ["A1", "A2", "A3"])
+
   end
 
 end
