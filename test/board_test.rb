@@ -32,7 +32,7 @@ class BoardTest < Minitest::Test
     assert_equal true, board.valid_coordinate?("D5")
   end
 
-  def test_it_can_check_for_valid_placement
+  def test_it_can_validate_ship_length_for_valid_placement
     # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
@@ -57,7 +57,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_is_in_singular_row
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -73,7 +73,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_is_in_singular_column
-    skip
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -89,7 +89,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_is_valid_for_columns
-    skip
+    # skip
     board = Board.new
 
     coordinates = ["A1", "A2", "A3", "A4"]
@@ -104,7 +104,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_is_valid_for_row
-    skip
+    # skip
     board = Board.new
 
     coordinates = ["A1", "B1", "C1", "D1"]
@@ -117,7 +117,7 @@ class BoardTest < Minitest::Test
     refute board.valid_row_spacing?(coordinates)
   end
 
-  def test_coordinates_are_consecutive
+  def test_coordinates_given_must_be_consecutive
     # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
@@ -129,7 +129,7 @@ class BoardTest < Minitest::Test
     assert_equal false, board.valid_placement?(cruiser, ["C1", "B1"])
   end
 
-  def test_coordinates_cannot_be_diagonal
+  def test_coordinates_given_cannot_be_diagonal
     # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
@@ -144,8 +144,15 @@ class BoardTest < Minitest::Test
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
 
-    # (cruiser, ["A1", "A2", "A3"])
+    board.place(cruiser, ["A1", "A2", "A3"])
+    cell_1 = board.cells["A1"]
+    cell_2 = board.cells["A2"]
+    cell_3 = board.cells["A3"]
 
+    assert_equal cruiser, cell_1.ship
+    assert_equal cruiser, cell_2.ship
+    assert_equal cruiser, cell_3.ship
+    assert cell_3.ship == cell_2.ship
   end
 
 end

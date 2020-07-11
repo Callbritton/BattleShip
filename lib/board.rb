@@ -1,11 +1,11 @@
 class Board
 attr_reader :cells
   def initialize
-    @cells = make_cells
+    @cells = initiate_cells
 
   end
 
-  def make_cells
+  def initiate_cells
     {
       "A1" => Cell.new("A1"), "A2" => Cell.new("A2"), "A3" => Cell.new("A3"), "A4" => Cell.new("A4"),
       "B1" => Cell.new("B1"), "B2" => Cell.new("B2"), "B3" => Cell.new("B3"), "B4" => Cell.new("B4"),
@@ -84,24 +84,16 @@ attr_reader :cells
     end
     return true
   end
+
+
+  def place(ship, coordinates)
+    if valid_placement?(ship, coordinates)
+      coordinates.each do |coordinate|
+        if @cells[coordinate].empty?
+          @cells[coordinate].place_ship(ship)
+        end
+      end
+    end
+  end
+
 end
-
-  # This will seperate our split coordinates into letters.
-  def seperate_by_rows(coordinates)
-    split_coordinates(coordinates).map { |coordinate| coordinate[0] }
-  end
-  
-  # This will seperate our split coordinates into numbers - added .to_i as it
-  # was returning strings.
-  def seperate_by_columns(coordinates)
-    split_coordinates(coordinates).map { |coordinate| coordinate[1].to_i }
-  end
-
-  # This will evaluate true/false if all? are letters:
-  def check_in_rows(coordinates)
-    seperate_by_rows(coordinates).all? { |row| seperate_by_rows(coordinates)[0] == row }
-  end
-  # This will evaluate true/false if all? are numbers:
-  def check_in_columns(coordinates)
-    seperate_by_columns(coordinates).all? { |column| seperate_by_columns(coordinates)[1] == column }
-  end
