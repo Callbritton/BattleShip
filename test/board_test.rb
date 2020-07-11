@@ -7,14 +7,14 @@ require './lib/board'
 class BoardTest < Minitest::Test
 
   def test_it_exists
-    # skip
+    skip
     board = Board.new
 
     assert_instance_of Board, board
   end
 
   def test_it_can_validate_coordinates
-    # skip
+    skip
     board = Board.new
 
     assert_equal true, board.valid_coordinate?("A1")
@@ -25,7 +25,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_add_cells
-    # skip
+    skip
     board = Board.new
 
     board.cells["D5"] = Cell.new("D5")
@@ -33,7 +33,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_validate_ship_length_for_valid_placement
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -46,7 +46,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_coordinates_are_split
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -66,14 +66,14 @@ class BoardTest < Minitest::Test
 
     assert_equal true, board.valid_row_placement?(coordinates)
 
-    coordinates = ["A1", "A2", "B3", "A4"]
+    coordinates = ["A1", "B2", "B3", "A4"]
 
     assert_equal false, board.valid_row_placement?(coordinates)
 
   end
 
   def test_it_is_in_singular_column
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -89,7 +89,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_is_valid_for_columns
-    # skip
+    skip
     board = Board.new
 
     coordinates = ["A1", "A2", "A3", "A4"]
@@ -104,7 +104,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_is_valid_for_row
-    # skip
+    skip
     board = Board.new
 
     coordinates = ["A1", "B1", "C1", "D1"]
@@ -118,7 +118,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_coordinates_given_must_be_consecutive
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -130,7 +130,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_coordinates_given_cannot_be_diagonal
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -140,7 +140,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_can_place_a_ship
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
 
@@ -156,7 +156,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_ships_cannot_overlap
-    # skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
@@ -167,7 +167,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_to_verify_all_cells_are_empty
-    #skip
+    skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
 
