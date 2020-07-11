@@ -19,9 +19,10 @@ attr_reader :cells
   end
 
   def valid_placement?(ship, coordinates)
-    coordinates.length == ship.length &&
+    coordinates.length == ship.length && all_cells_are_empty?(coordinates) &&
       (valid_row_placement?(coordinates) && valid_column_spacing?(coordinates)) ||
-      (valid_column_placement?(coordinates) && valid_row_spacing?(coordinates))
+      (valid_column_placement?(coordinates) && valid_row_spacing?(coordinates)) &&
+      all_cells_are_empty?(coordinates)
   end
 
   #This splits our coordinates!
@@ -85,15 +86,21 @@ attr_reader :cells
     return true
   end
 
-
   def place(ship, coordinates)
     if valid_placement?(ship, coordinates)
       coordinates.each do |coordinate|
-        if @cells[coordinate].empty?
-          @cells[coordinate].place_ship(ship)
+        if cells[coordinate].empty?
+          cells[coordinate].place_ship(ship)
         end
       end
     end
   end
+
+  def all_cells_are_empty?(coordinates)
+    coordinates.all? do |coordinate|
+      cells[coordinate].empty?
+    end
+  end
+
 
 end
