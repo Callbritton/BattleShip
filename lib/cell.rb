@@ -12,8 +12,8 @@ class Cell
     @ship == nil
   end
 
-  def place_ship(boat)
-    @ship = boat
+  def place_ship(ship)
+    @ship = ship
   end
 
   def fired_upon?
@@ -31,7 +31,7 @@ class Cell
     end
   end
 
-  def render(variable = false)
+  def render(show = false)
     if !@shot_at
       "."
     elsif !@ship
