@@ -177,16 +177,23 @@ class BoardTest < Minitest::Test
   end
 
   def test_board_renders
+    # skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     coordiantes = ["A1", "A2", "A3"]
-    #To check if ships can be hidden
-    #board.place(cruiser, ["A1", "A2", "A3"])
 
     assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n",
     board.render
+  end
+  def test_board_renders_ships
+    #skip
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    # coordiantes = ["A1", "A2", "A3"]
 
-    # assert_equal "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n",
-    # board.render(show = true)
+    board.place(cruiser, ["A1", "A2", "A3"])
+
+    assert_equal "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n",
+    board.render(true)
   end
 end
