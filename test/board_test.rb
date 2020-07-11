@@ -189,11 +189,24 @@ class BoardTest < Minitest::Test
     #skip
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
-    # coordiantes = ["A1", "A2", "A3"]
 
     board.place(cruiser, ["A1", "A2", "A3"])
 
     assert_equal "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n",
     board.render(true)
+  end
+
+  def test_board_renders_hits
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+
+    board.place(cruiser, ["A1", "A2", "A3"])
+    board.cells["A1"].fire_upon
+    assert_equal "  1 2 3 4 \nA H . . . \nB . . . . \nC . . . . \nD . . . . \n",
+    board.render
+
+    board.cells["A2"].fire_upon
+    assert_equal "  1 2 3 4 \nA H H . . \nB . . . . \nC . . . . \nD . . . . \n",
+    board.render
   end
 end
