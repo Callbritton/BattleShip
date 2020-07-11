@@ -62,7 +62,7 @@ attr_reader :cells
         return false
       end
     end
-      # If all coordinates are of the same letter, this will return true. 
+      # If all coordinates are of the same letter, this will return true.
     return true
   end
 
@@ -85,7 +85,7 @@ attr_reader :cells
     split = split_coordinates(coordinates)
     split.each_with_index do |current_coordinate, index|
       if index != 0 #if we are on the first element we haven't navigated a space yet.
-        previous_coordinate = split[index - 1]
+        previous_coordinate = split[index -1]
         previous_column = previous_coordinate[1].ord
         current_column = current_coordinate[1].ord
         if previous_column - current_column != -1
@@ -103,7 +103,7 @@ attr_reader :cells
     split = split_coordinates(coordinates)
     split.each_with_index do |current_coordinate, index|
       if index != 0
-        previous_coordinate = split[index - 1]
+        previous_coordinate = split[index -1]
         previous_row = previous_coordinate[0].ord
         current_row = current_coordinate[0].ord
         if previous_row - current_row != -1
