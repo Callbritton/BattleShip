@@ -29,7 +29,7 @@ class Cell
       if empty?
       @shot_at = true
       @miss = true
-    else
+      elsif !empty?
       @ship.hit
       @shot_at = true
       @miss = false
