@@ -34,7 +34,7 @@ class Cell
       @shot_at = true
       @miss = false
       end
-    # else "Scallywag! You've alredy shot here, try again."
+     else "Scallywag! You've alredy shot here, try again."
     end
   end
 # This establishes what should be rendered given different conditions.
@@ -44,11 +44,11 @@ class Cell
 # else, the cell will render "X" if there was a ship present but it has been sunk.
   def render(show = false)
     if !empty? && @ship.sunk?
-      "X"  # visually appealing
+      "☠️"  # visually appealing
     elsif @shot_at && empty?
       "M"
     elsif @shot_at && !empty?
-      "H"  # visually appealing
+      "💥"  # visually appealing
     elsif show == true && !empty?
       "S"
     elsif !@shot_at
