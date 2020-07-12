@@ -209,4 +209,35 @@ class BoardTest < Minitest::Test
     assert_equal "  1 2 3 4 \nA H H . . \nB . . . . \nC . . . . \nD . . . . \n",
     board.render
   end
+
+  def test_board_renders_misses
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+
+    board.cells["A1"].fire_upon
+    assert_equal "  1 2 3 4 \nA M . . . \nB . . . . \nC . . . . \nD . . . . \n",
+    board.render
+
+    board.cells["A2"].fire_upon
+    assert_equal "  1 2 3 4 \nA M M . . \nB . . . . \nC . . . . \nD . . . . \n",
+    board.render
+  end
+
+  def test_board_renders_sunken_ships
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+
+    board.place(cruiser, ["D1", "D2", "D3"])
+    board.cells["D1"].fire_upon
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD H . . . \n",
+    board.render
+
+    board.cells["D2"].fire_upon
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD H H . . \n",
+    board.render
+
+    board.cells["D3"].fire_upon
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD X X X . \n",
+    board.render
+  end
 end
