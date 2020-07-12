@@ -202,11 +202,11 @@ class BoardTest < Minitest::Test
 
     board.place(cruiser, ["A1", "A2", "A3"])
     board.cells["A1"].fire_upon
-    assert_equal "  1 2 3 4 \nA H . . . \nB . . . . \nC . . . . \nD . . . . \n",
+    assert_equal "  1 2 3 4 \nA 💥 . . . \nB . . . . \nC . . . . \nD . . . . \n",
     board.render
 
     board.cells["A2"].fire_upon
-    assert_equal "  1 2 3 4 \nA H H . . \nB . . . . \nC . . . . \nD . . . . \n",
+    assert_equal "  1 2 3 4 \nA 💥 💥 . . \nB . . . . \nC . . . . \nD . . . . \n",
     board.render
   end
 
@@ -229,15 +229,15 @@ class BoardTest < Minitest::Test
 
     board.place(cruiser, ["D1", "D2", "D3"])
     board.cells["D1"].fire_upon
-    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD H . . . \n",
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD 💥 . . . \n",
     board.render
 
     board.cells["D2"].fire_upon
-    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD H H . . \n",
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD 💥 💥 . . \n",
     board.render
 
     board.cells["D3"].fire_upon
-    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD X X X . \n",
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD ☠️ ☠️ ☠️ . \n",
     board.render
   end
 end
