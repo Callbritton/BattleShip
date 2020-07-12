@@ -72,7 +72,7 @@ class CellTest < Minitest::Test
 
     cell_1.place_ship(cruiser)
     cell_1.fire_upon
-    assert_equal "H", cell_1.render
+    assert_equal "💥", cell_1.render
   end
 
   def test_it_renders_if_miss
@@ -87,15 +87,28 @@ class CellTest < Minitest::Test
   end
 
   def test_it_renders_if_sunk
-    skip
-    cell_1 = Cell.new("B4")
+    # skip
+    cell_1 = Cell.new("B1")
     cruiser = Ship.new("Cruiser", 3)
 
     cell_1.place_ship(cruiser)
     cell_1.fire_upon
     assert_equal false, cruiser.sunk?
-    2.times do cell_1.fire_upon end
-    assert_equal "X", cell_1.render
+    2.times do cruiser.hit end
+    assert_equal "☠️", cell_1.render
     assert_equal true, cruiser.sunk?
   end
+
+    def test_can_only_fire_upon_once
+      cell_1 = Cell.new("B1")
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell_1.place_ship(cruiser)
+      cell_1.fire_upon
+
+      assert_equal "💥", cell_1.render
+      cell_1.fire_upon
+      assert_equal "Scallywag! You've alredy shot here, try again.",
+      cell_1.fire_upon
+    end
 end
