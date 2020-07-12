@@ -87,7 +87,7 @@ class CellTest < Minitest::Test
   end
 
   def test_it_renders_if_sunk
-    skip
+    # skip
     cell_1 = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
 
