@@ -16,9 +16,10 @@ class GameTest < Minitest::Test
   def test_greets_player
     game = Game.new
 
-    game.start
 
-    require "pry"; binding.pry
+    assert_equal " ⚓⚓⚓ Welcome to BATTLESHIP ⚓⚓⚓ \n"
+    " Enter p to play. Enter q to quit"
+    ">", game.start_menu 
   end
 
 end
