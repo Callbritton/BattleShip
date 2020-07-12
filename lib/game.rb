@@ -1,7 +1,9 @@
 class Game
-
+  attr_reader :player1, :computer, :board
   def initialize
-
+    @player1 = Player.new
+    # @computer = Computer.new
+    @board = Board.new
   end
 
 
@@ -12,7 +14,6 @@ class Game
     user_input = gets.chomp.downcase
     if user_input == "p"
       instructions
-      # method that runs the game... maybe "load" or something.
     elsif user_input == "q"
       puts "Fare thee well, Scallywag"
     end
@@ -20,26 +21,30 @@ class Game
 
   def instructions
     puts "🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️"
-    puts "Ahoy Matey! \n"
-    puts "Place ye ships wisely \n"
-    puts "as there be only two ships in your control. \n"
-    puts "The Cruiser be three units long, \n"
-    puts "while the submarine be two. \n"
-    puts "The game board is below. \n"
-    puts "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
-    puts "Avast, ye landlubber! \n"
-    puts "Give me tree cor'nates, \n"
-    puts "and make true they be ascending"
-    puts "> "
+    puts "Ahoy Matey!"
+    puts "Up fer a friendly game of Battleship?"
+    puts "I've placed mine ships, an' their"
+    puts "where'bouts are none yer affair."
+    puts ""
+    puts "Place ye ships wisely"
+    puts "as there be only hav'n two ships."
+    puts "The Cruiser be three units long,"
+    puts "while the submarine be two."
+    puts "Here's ye map of tha game."
+    puts ""
+    puts "#{board.render}"
+    require "pry"; binding.pry
+    puts "Enough jabber'n, ye landlubber! \n"
+    puts "It be time to place yer ships!"
+    player1.place_cruiser
     puts "Here ye cruiser be"
-    # player board rendered(true)
-    puts "Now, give me two cor'nates"
-    puts "> "
+    puts "#{player1.board.render(true)}"
+    player1.place_sub
     puts "Here ye submarine be"
-    # player board rendered(true)
+    puts "#{player1.board.render(true)}"
   end
 
-  # def load
+  # def run
   #   until player1.has_lost? || computer.has_lost?
   #     puts "====================COMPUTER BOARD===================="
   #     # computer board render goes here
@@ -51,7 +56,10 @@ class Game
   # end
 
   # def outcome
-  #
+  #   if !player1.has_lost?
+  #     puts "Player1 has won the game!!!"
+  #   elsif player1.has_lost?
+  #     puts "Player1 has been defeated by the computer."
   # end
 
 

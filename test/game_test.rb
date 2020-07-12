@@ -4,22 +4,28 @@ require './lib/ships'
 require './lib/cell'
 require './lib/board'
 require './lib/game'
+require './lib/player'
 
 class GameTest < Minitest::Test
 
   def test_it_exists
+    # skip
+
     game = Game.new
 
     assert_instance_of Game, game
   end
 
-  def test_greets_player
+  def test_it_renders_the_board
+    # skip
+
     game = Game.new
+    board = Board.new
+    player1 = Player.new
 
-
-    assert_equal " ⚓⚓⚓ Welcome to BATTLESHIP ⚓⚓⚓ \n"
-    " Enter p to play. Enter q to quit"
-    ">", game.start_menu 
+    clear_board = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    assert_equal clear_board, board.render
   end
+
 
 end
