@@ -30,24 +30,21 @@ class Computer
       if
         board.valid_placement?(submarine, submarine_coordinates)
         board.place(submarine, submarine_coordinates)
-        require "pry"; binding.pry
         break
       end
     end
   end
 
-      # def submarine_starts_invalid(ships[1], ["A1", "D4"])
-      #
-      # end
+  def cannon_blast
+    # require "pry"; binding.pry
+    pirate_shot = @board.cells.keys.sample
+    #fire at pirate_shot, but it is now simply a string
+    if @board.cells["#{pirate_shot}"].render == "☠️"
+      puts "Sunk #{board.ship}."
+    elsif @board.cells["#{pirate_shot}"].render == "💥"
+      puts "Hit!"
+    elsif @board.cells["#{pirate_shot}"].render == "M"
+      puts "Miss."
+    end
+  end
 end
-
-    #ship.length decrements to place remaining ship
-    #how to obtain proper ord values and make sure
-    #each difference is -1.
-    # potential_placement -= potential_placement
-    #
-    # if potential_placement == board.valid_placement?
-    #   place(ships[0])
-#   end
-#
-#end
