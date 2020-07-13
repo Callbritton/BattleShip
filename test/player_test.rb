@@ -5,6 +5,7 @@ require './lib/cell'
 require './lib/board'
 require './lib/game'
 require './lib/player'
+require './lib/computer'
 
 class PlayerTest < Minitest::Test
 
@@ -28,7 +29,7 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_place_submarines
-    # skip
+    skip
     player1 = Player.new
     submarine = player1.submarine
 
@@ -37,4 +38,12 @@ class PlayerTest < Minitest::Test
     # all the same).
     assert_equal ["A1", "A2"], player1.place_submarine
   end
+
+  def test_cannon_blast_can_get_coordinates
+    #skip
+    player1 = Player.new
+
+    assert_equal ["A1"], player1.cannon_blast
+  end
+
 end

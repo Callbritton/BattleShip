@@ -44,7 +44,7 @@ class Game
     puts "#{player1.board.render(true)}"
   end
 
-  # def run
+  # def turn
   #   until player1.has_lost? || computer.has_lost?
   #     puts "====================COMPUTER BOARD===================="
   #     # computer board render goes here
