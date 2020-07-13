@@ -36,9 +36,8 @@ class Computer
   end
 
   def cannon_blast
-    # require "pry"; binding.pry
     pirate_shot = @board.cells.keys.sample
-    #fire at pirate_shot, but it is now simply a string
+    @board.cells["#{pirate_shot}"].fire_upon
     if @board.cells["#{pirate_shot}"].render == "☠️"
       puts "Sunk #{board.ship}."
     elsif @board.cells["#{pirate_shot}"].render == "💥"
