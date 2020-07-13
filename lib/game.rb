@@ -39,8 +39,10 @@ class Game
     # player board rendered(true)
   end
 
-  # def load
+  # def load / def win_condition?
+  # computer_ship_placement
   #   until player1.has_lost? || computer.has_lost?
+  #   
   #     puts "====================COMPUTER BOARD===================="
   #     # computer board render goes here
   #     puts "=====================PLAYER BOARD====================="
@@ -53,7 +55,5 @@ class Game
   # def outcome
   #
   # end
-
-
 
 end
