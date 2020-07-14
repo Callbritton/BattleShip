@@ -53,6 +53,7 @@ class PlayerTest < Minitest::Test
     submarine = Ship.new("Submarine", 2)
 
     player.board.place(submarine, ["C2", "C3"])
+    # computer.board.place(submarine, ["A1", "A2:"])
     player.cannon_blast
   end
 
