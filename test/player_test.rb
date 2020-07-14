@@ -40,10 +40,20 @@ class PlayerTest < Minitest::Test
   end
 
   def test_cannon_blast_can_get_coordinates
-    #skip
+    skip
     player1 = Player.new
 
     assert_equal ["A1"], player1.cannon_blast
+  end
+
+  def test_if_cannon_blast_fires
+    # skip
+    player = Player.new
+    computer = Computer.new
+    submarine = Ship.new("Submarine", 2)
+
+    player.board.place(submarine, ["C2", "C3"])
+    player.cannon_blast
   end
 
 end

@@ -12,7 +12,6 @@ class Player
     puts ""
     print "> "
     coordinates = gets.chomp.upcase.split(" ")
-    require "pry"; binding.pry
 
     if board.valid_placement?(cruiser, coordinates)
       board.place(cruiser, coordinates)
@@ -24,16 +23,10 @@ class Player
   end
 
   def place_submarine
-    coordinates = []
-    puts "The submarine utilizes 2 coordinates."
-    puts "Enter yer first coordinate:"
+    puts "Yar gonna need to give me two coordinates..."
+    puts ""
     print "> "
-    first_coordinate = gets.chomp.upcase
-    coordinates << first_coordinate
-    puts "Enter yer second coordinate:"
-    print "> "
-    second_coordinate = gets.chomp.upcase
-    coordinates << second_coordinate
+    coordinates = gets.chomp.upcase.split(" ")
 
     if board.valid_placement?(submarine, coordinates)
       board.place(submarine, coordinates)
@@ -47,10 +40,15 @@ class Player
   def cannon_blast
     puts "Now tis yer turn to fire!"
     puts "Hit me if ye can, landlubber!"
-    player_shot = gets.chomp.upcase.split(" ")
-
-    
-
+    # player_shot = gets.chomp.upcase
+    player_shot = "A1"
+    @board.cells[player_shot].fire_upon
+    if @board.cells["#{player_shot}"].render == "☠️"
+      puts "Sunk #{board.ship}."
+    elsif @board.cells["#{player_shot}"].render == "💥"
+      puts "Hit!"
+    elsif @board.cells["#{player_shot}"].render == "M"
+      puts "Miss."
+    end
   end
-
 end
