@@ -12,7 +12,7 @@ class Player
     puts ""
     print "> "
     coordinates = gets.chomp.upcase.split(" ")
-    require "pry"; binding.pry
+
 
     if board.valid_placement?(cruiser, coordinates)
       board.place(cruiser, coordinates)
@@ -24,22 +24,16 @@ class Player
   end
 
   def place_submarine
-    coordinates = []
     puts "The submarine utilizes 2 coordinates."
     puts "Enter yer first coordinate:"
     print "> "
-    first_coordinate = gets.chomp.upcase
-    coordinates << first_coordinate
-    puts "Enter yer second coordinate:"
-    print "> "
-    second_coordinate = gets.chomp.upcase
-    coordinates << second_coordinate
+    coordinates = gets.chomp.upcase.split(" ")
 
     if board.valid_placement?(submarine, coordinates)
       board.place(submarine, coordinates)
     else
       puts "***Wrong coordinates, landlubber!*** \n"
-      puts "***I need tree coordinates...***"
+      puts "***I need two coordinates...***"
       place_submarine
     end
   end
@@ -49,7 +43,7 @@ class Player
     puts "Hit me if ye can, landlubber!"
     player_shot = gets.chomp.upcase.split(" ")
 
-    
+
 
   end
 

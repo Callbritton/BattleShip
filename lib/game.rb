@@ -33,13 +33,12 @@ class Game
     puts "Here's ye map of tha game."
     puts ""
     puts "#{board.render}"
-    require "pry"; binding.pry
     puts "Enough jabber'n, ye landlubber! \n"
     puts "It be time to place yer ships!"
     player1.place_cruiser
     puts "Here ye cruiser be"
     puts "#{player1.board.render(true)}"
-    player1.place_sub
+    player1.place_submarine
     puts "Here ye submarine be"
     puts "#{player1.board.render(true)}"
   end
