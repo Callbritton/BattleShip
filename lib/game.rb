@@ -1,8 +1,8 @@
 class Game
-  attr_reader :player1, :computer, :board
+  attr_reader :player, :computer, :board
   def initialize
-    @player1 = Player.new
-    # @computer = Computer.new
+    @player = Player.new
+    @computer = Computer.new
     @board = Board.new
   end
 
@@ -33,19 +33,23 @@ class Game
     puts "Here's ye map of tha game."
     puts ""
     puts "#{board.render}"
-    require "pry"; binding.pry
     puts "Enough jabber'n, ye landlubber! \n"
     puts "It be time to place yer ships!"
-    player1.place_cruiser
+    player.place_cruiser
     puts "Here ye cruiser be"
-    puts "#{player1.board.render(true)}"
-    player1.place_sub
+    puts "#{player.board.render(true)}"
+    player.place_sub
     puts "Here ye submarine be"
-    puts "#{player1.board.render(true)}"
+    puts "#{player.board.render(true)}"
+    # maybe add a sleep function
+    # initiate turn
   end
 
   # def turn
-  #   until player1.has_lost? || computer.has_lost?
+  # computer.place_cruiser
+  # computer.place_submarine
+
+  #   until player.has_lost? || computer.has_lost?
   #     puts "====================COMPUTER BOARD===================="
   #     # computer board render goes here
   #     puts "=====================PLAYER BOARD====================="
@@ -55,10 +59,12 @@ class Game
   #   start_menu # return to start menu
   # end
 
+  # has_lost?
+
   # def outcome
-  #   if !player1.has_lost?
+  #   if !player.has_lost?
   #     puts "Player1 has won the game!!!"
-  #   elsif player1.has_lost?
+  #   elsif player.has_lost?
   #     puts "Player1 has been defeated by the computer."
   # end
 

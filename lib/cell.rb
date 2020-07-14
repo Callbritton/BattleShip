@@ -26,15 +26,16 @@ class Cell
 # health by 1), set @shot_at to true, and @miss to false.
   def fire_upon
     if !fired_upon?
+      @shot_at = true
       if empty?
-      @shot_at = true
-      @miss = true
+        @miss = true
       elsif !empty?
-      @ship.hit
-      @shot_at = true
-      @miss = false
+        @ship.hit
+        @miss = false
       end
-     else "Scallywag! You've alredy shot here, try again."
+    else
+      puts "Scallywag! You've alredy shot here, try again."
+      return "Scallywag! You've alredy shot here, try again."
     end
   end
 # This establishes what should be rendered given different conditions.
