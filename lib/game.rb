@@ -38,36 +38,30 @@ class Game
     player.place_cruiser
     puts "Here ye cruiser be"
     puts "#{player.board.render(true)}"
-    player.place_sub
-    puts "Here ye submarine be"
+    player.place_submarine
+    puts "Here ye ships be"
     puts "#{player.board.render(true)}"
-    # maybe add a sleep function
-    # initiate turn
+
+    turn
   end
 
-  # def turn
-  # computer.place_cruiser
-  # computer.place_submarine
+  def turn
+    computer.computer_ship_placement
+    until player.has_lost? || computer.has_lost?
 
-  #   until player.has_lost? || computer.has_lost?
-  #     puts "====================COMPUTER BOARD===================="
-  #     # computer board render goes here
-  #     puts "=====================PLAYER BOARD====================="
-  #     # player board render(true) goes here
-  #   end
-  #   outcome # create a method that says who won
-  #   start_menu # return to start menu
-  # end
-
-  # has_lost?
-
-  # def outcome
-  #   if !player.has_lost?
-  #     puts "Player1 has won the game!!!"
-  #   elsif player.has_lost?
-  #     puts "Player1 has been defeated by the computer."
-  # end
-
-
+      puts "====================COMPUTER BOARD===================="
+      puts "#{computer.board.render(true)}"
+      puts "=====================PLAYER BOARD====================="
+      puts "#{player.board.render(true)}"
+      puts " "
+      puts "Computer takes a shot"
+      computer.cannon_blast
+      puts "#{player.board.render(true)}"
+      puts " "
+      player.cannon_blast
+    end
+    outcome # create a method that says who won
+    start_menu # return to start menu
+  end
 
 end

@@ -32,7 +32,7 @@ class Player
       board.place(submarine, coordinates)
     else
       puts "***Wrong coordinates, landlubber!*** \n"
-      puts "***I need tree coordinates...***"
+      puts "***I need two coordinates...***"
       place_submarine
     end
   end
@@ -58,4 +58,7 @@ class Player
       end
     end
 
+    def has_lost?
+      @cruiser.health == 0 && @submarine.health == 0
+    end
 end
