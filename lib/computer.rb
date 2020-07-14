@@ -46,4 +46,8 @@ class Computer
       puts "Miss."
     end
   end
+
+  def has_lost?
+    @cruiser.health == 0 && @submarine.health == 0
+  end
 end

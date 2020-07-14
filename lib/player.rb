@@ -42,9 +42,10 @@ class Player
     puts "Now tis yer turn to fire!"
     puts "Hit me if ye can, landlubber!"
     player_shot = gets.chomp.upcase.split(" ")
-
-
-
+  end
+  
+  def has_lost?
+    @cruiser.health == 0 && @submarine.health == 0
   end
 
 end

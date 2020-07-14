@@ -2,7 +2,7 @@ class Game
   attr_reader :player1, :computer, :board
   def initialize
     @player1 = Player.new
-    # @computer = Computer.new
+    @computer = Computer.new
     @board = Board.new
   end
 
@@ -39,21 +39,30 @@ class Game
     puts "Here ye cruiser be"
     puts "#{player1.board.render(true)}"
     player1.place_submarine
-    puts "Here ye submarine be"
+    puts "Here ye ships be"
     puts "#{player1.board.render(true)}"
+
+    turn
   end
 
-  # def turn
-  #   until player1.has_lost? || computer.has_lost?
-  #
-  #     puts "====================COMPUTER BOARD===================="
-  #     # computer board render goes here
-  #     puts "=====================PLAYER BOARD====================="
-  #     # player board render(true) goes here
-  #   end
-  #   outcome # create a method that says who won
-  #   start_menu # return to start menu
-  # end
+  def turn
+    computer.computer_ship_placement
+    until player1.has_lost? || computer.has_lost?
+
+      puts "====================COMPUTER BOARD===================="
+      puts "#{computer.board.render(true)}"
+      puts "=====================PLAYER BOARD====================="
+      puts "#{player1.board.render(true)}"
+      puts " "
+      puts "Computer takes a shot"
+      computer.cannon_blast
+      puts "#{player1.board.render(true)}"
+      puts " "
+      player1.cannon_blast
+    end
+    outcome # create a method that says who won
+    start_menu # return to start menu
+  end
 
   # def outcome
   #   if !player1.has_lost?
