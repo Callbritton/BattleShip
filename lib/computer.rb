@@ -35,9 +35,9 @@ class Computer
     end
   end
 
-  def cannon_blast
+  def cannon_blast(player_board)
     pirate_shot = @board.cells.keys.sample
-    @board.cells["#{pirate_shot}"].fire_upon
+    player_board.cells["#{pirate_shot}"].fire_upon
     if @board.cells["#{pirate_shot}"].render == "☠️"
       puts "Sunk #{board.ship}."
     elsif @board.cells["#{pirate_shot}"].render == "💥"
