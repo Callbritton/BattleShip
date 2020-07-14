@@ -1,7 +1,11 @@
 class Game
-  attr_reader :player1, :computer, :board
+  attr_reader :player, :computer, :board
   def initialize
+<<<<<<< HEAD
     @player1 = Player.new
+=======
+    @player = Player.new
+>>>>>>> a8d2731677e5f1b363a21de5a7fa2490ddf7cce1
     @computer = Computer.new
     @board = Board.new
   end
@@ -35,8 +39,9 @@ class Game
     puts "#{board.render}"
     puts "Enough jabber'n, ye landlubber! \n"
     puts "It be time to place yer ships!"
-    player1.place_cruiser
+    player.place_cruiser
     puts "Here ye cruiser be"
+<<<<<<< HEAD
     puts "#{player1.board.render(true)}"
     player1.place_submarine
     puts "Here ye ships be"
@@ -63,11 +68,36 @@ class Game
     outcome # create a method that says who won
     start_menu # return to start menu
   end
+=======
+    puts "#{player.board.render(true)}"
+    player.place_sub
+    puts "Here ye submarine be"
+    puts "#{player.board.render(true)}"
+    # maybe add a sleep function
+    # initiate turn
+  end
+
+  # def turn
+  # computer.place_cruiser
+  # computer.place_submarine
+
+  #   until player.has_lost? || computer.has_lost?
+  #     puts "====================COMPUTER BOARD===================="
+  #     # computer board render goes here
+  #     puts "=====================PLAYER BOARD====================="
+  #     # player board render(true) goes here
+  #   end
+  #   outcome # create a method that says who won
+  #   start_menu # return to start menu
+  # end
+>>>>>>> a8d2731677e5f1b363a21de5a7fa2490ddf7cce1
+
+  # has_lost?
 
   # def outcome
-  #   if !player1.has_lost?
+  #   if !player.has_lost?
   #     puts "Player1 has won the game!!!"
-  #   elsif player1.has_lost?
+  #   elsif player.has_lost?
   #     puts "Player1 has been defeated by the computer."
   # end
 

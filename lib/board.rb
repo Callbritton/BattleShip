@@ -25,8 +25,8 @@ attr_reader :cells
 # then check if
   def valid_placement?(ship, coordinates)
     coordinates.length == ship.length &&
-      (valid_row_placement?(coordinates) && valid_column_spacing?(coordinates)) ||
-      (valid_column_placement?(coordinates) && valid_row_spacing?(coordinates)) &&
+      ((valid_row_placement?(coordinates) && valid_column_spacing?(coordinates)) ||
+      (valid_column_placement?(coordinates)) && valid_row_spacing?(coordinates)) &&
       all_cells_are_empty?(coordinates)
   end
 
@@ -74,7 +74,7 @@ attr_reader :cells
     # intended column value.
     split = split_coordinates(coordinates)
     # We use the split array to parse out one set of coordiantes
-    coordinate = split[1]
+    coordinate = split[0]
     # column assigns the test against value for the .each iteration
     column = coordinate[1]
     # Now we iterate over the split array pulling out each coordiante number.
@@ -192,6 +192,6 @@ attr_reader :cells
       "B #{@cells["B1"].render(true)} #{@cells["B2"].render(true)} #{@cells["B3"].render(true)} #{@cells["B4"].render(true)} \n" +
       "C #{@cells["C1"].render(true)} #{@cells["C2"].render(true)} #{@cells["C3"].render(true)} #{@cells["C4"].render(true)} \n" +
       "D #{@cells["D1"].render(true)} #{@cells["D2"].render(true)} #{@cells["D3"].render(true)} #{@cells["D4"].render(true)} \n"
-    end 
+    end
   end
 end

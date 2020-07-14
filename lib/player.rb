@@ -13,7 +13,6 @@ class Player
     print "> "
     coordinates = gets.chomp.upcase.split(" ")
 
-
     if board.valid_placement?(cruiser, coordinates)
       board.place(cruiser, coordinates)
     else
@@ -24,8 +23,8 @@ class Player
   end
 
   def place_submarine
-    puts "The submarine utilizes 2 coordinates."
-    puts "Enter yer first coordinate:"
+    puts "Yar gonna need to give me two coordinates..."
+    puts ""
     print "> "
     coordinates = gets.chomp.upcase.split(" ")
 
@@ -41,11 +40,15 @@ class Player
   def cannon_blast
     puts "Now tis yer turn to fire!"
     puts "Hit me if ye can, landlubber!"
-    player_shot = gets.chomp.upcase.split(" ")
+    # player_shot = gets.chomp.upcase
+    player_shot = "A1"
+    @board.cells[player_shot].fire_upon
+    if @board.cells["#{player_shot}"].render == "☠️"
+      puts "Sunk #{board.ship}."
+    elsif @board.cells["#{player_shot}"].render == "💥"
+      puts "Hit!"
+    elsif @board.cells["#{player_shot}"].render == "M"
+      puts "Miss."
+    end
   end
-  
-  def has_lost?
-    @cruiser.health == 0 && @submarine.health == 0
-  end
-
 end
