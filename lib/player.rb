@@ -45,11 +45,11 @@ class Player
 
     if board.valid_coordinate?(player_shot)
       board.cells[player_shot].fire_upon
-      if board.cells["#{player_shot}"].render == "☠️"
+      if board.cells[player_shot].render == "☠️"
         puts "Sunk #{board.ship}."
-      elsif board.cells["#{player_shot}"].render == "💥"
+      elsif board.cells[player_shot].render == "💥"
         puts "Hit!"
-      elsif board.cells["#{player_shot}"].render == "M"
+      elsif board.cells[player_shot].render == "M"
         puts "Miss."
       end
     else
