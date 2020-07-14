@@ -40,7 +40,11 @@ class Game
     puts "#{player.board.render(true)}"
     player.place_submarine
     puts "Here ye ships be"
+    puts "======PLAYER BOARD======"
     puts "#{player.board.render(true)}"
+    puts "========================"
+    puts ""
+    sleep(2)
 
     turn
   end
@@ -49,19 +53,32 @@ class Game
     computer.computer_ship_placement
     until player.has_lost? || computer.has_lost?
 
-      puts "====================COMPUTER BOARD===================="
+      puts "=====COMPUTER BOARD====="
       puts "#{computer.board.render(true)}"
-      puts "=====================PLAYER BOARD====================="
-      puts "#{player.board.render(true)}"
+      puts "========================"
       puts " "
+      puts "======PLAYER BOARD======"
+      puts "#{player.board.render(true)}"
+      puts "========================"
+      sleep(2)
       puts "Computer takes a shot"
-      computer.cannon_blast
+      computer.cannon_blast(player.board)
+      puts "======PLAYER BOARD======"
       puts "#{player.board.render(true)}"
+      puts "========================"
       puts " "
-      player.cannon_blast
+      player.cannon_blast(computer.board)
     end
-    outcome # create a method that says who won
+    outcome
     start_menu # return to start menu
   end
-
+  def outcome
+    if !player.has_lost?
+      puts "🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️"
+      puts "Yar how could ya beat me computer."
+    else
+      puts "Down to Davey Jones' locker with ya."
+      puts "Computer has won the game!"
+    end
+  end
 end

@@ -37,19 +37,20 @@ class Player
     end
   end
 
-  def cannon_blast
+  def cannon_blast(computer_board)
     puts "Now tis yer turn to fire!"
     puts "Hit me if ye can, landlubber!"
+    puts ""
 
     player_shot = gets.chomp.upcase
 
     if board.valid_coordinate?(player_shot)
-      board.cells[player_shot].fire_upon
-      if board.cells[player_shot].render == "☠️"
-        puts "Sunk #{board.ship}."
-      elsif board.cells[player_shot].render == "💥"
+      computer_board.cells[player_shot].fire_upon
+      if computer_board.cells[player_shot].render == "☠️"
+        puts "Sunk."
+      elsif computer_board.cells[player_shot].render == "💥"
         puts "Hit!"
-      elsif board.cells[player_shot].render == "M"
+      elsif computer_board.cells[player_shot].render == "M"
         puts "Miss."
       end
     else
@@ -59,6 +60,6 @@ class Player
     end
 
     def has_lost?
-      @cruiser.health == 0 && @submarine.health == 0
+      @cruiser.sunk? && @submarine.sunk?
     end
 end
