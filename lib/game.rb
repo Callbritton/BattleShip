@@ -1,11 +1,9 @@
 class Game
-  attr_reader :player, :computer#, :board
+  attr_reader :player, :computer
   def initialize
     @player = Player.new
     @computer = Computer.new
-    # @board = Board.new
   end
-
 
   def start_menu
     puts " ⚓⚓⚓ Welcome to BATTLESHIP ⚓⚓⚓ \n"
@@ -73,10 +71,10 @@ class Game
         player.cannon_blast(computer.board)
       end
     end
-
     outcome
     start_menu
   end
+
   def outcome
     if !player.has_lost?
       puts "=====COMPUTER BOARD====="
@@ -93,4 +91,5 @@ class Game
       puts ""
     end
   end
+
 end

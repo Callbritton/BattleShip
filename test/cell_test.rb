@@ -99,5 +99,4 @@ class CellTest < Minitest::Test
     assert_equal true, cruiser.sunk?
   end
 
-
 end

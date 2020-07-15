@@ -13,7 +13,6 @@ class ComputerTest < Minitest::Test
     computer = Computer.new
 
     assert_instance_of Computer, computer
-
   end
 
   def test_computer_has_ships
@@ -34,6 +33,7 @@ class ComputerTest < Minitest::Test
     assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n",
     computer.board.render
   end
+
   def test_board_shows_ships_hit
     # skip
     computer = Computer.new
@@ -81,8 +81,6 @@ class ComputerTest < Minitest::Test
     computer.board.place(submarine, ["C2", "C3"])
     computer.cannon_blast(player.board)
   end
-end
-
 
 # def test_computer_places_ships_randomly
 #   #how would one test if random = random?
@@ -90,3 +88,5 @@ end
 #   computer = Computer.new
 #   computer.computer_ship_placement
 # end
+
+end

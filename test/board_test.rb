@@ -42,7 +42,6 @@ class BoardTest < Minitest::Test
 
     assert_equal false, board.valid_placement?(cruiser, coordinates)
     assert_equal true, board.valid_placement?(submarine, coordinates)
-
   end
 
   def test_coordinates_are_split
@@ -69,7 +68,6 @@ class BoardTest < Minitest::Test
     coordinates = ["A1", "B2", "B3", "A4"]
 
     assert_equal false, board.valid_row_placement?(coordinates)
-
   end
 
   def test_it_is_in_singular_column
@@ -85,7 +83,6 @@ class BoardTest < Minitest::Test
     coordinates = ["A1", "A2", "B3", "A4"]
 
     assert_equal false, board.valid_column_placement?(coordinates)
-
   end
 
   def test_it_is_valid_for_columns
@@ -100,7 +97,6 @@ class BoardTest < Minitest::Test
 
     coordinates = ["A1", "A3", "A2"]
     refute board.valid_column_spacing?(coordinates)
-
   end
 
   def test_it_is_valid_for_row
@@ -185,6 +181,7 @@ class BoardTest < Minitest::Test
     assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n",
     board.render
   end
+
   def test_board_renders_ships
     #skip
     board = Board.new
@@ -240,4 +237,5 @@ class BoardTest < Minitest::Test
     assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD ☠️ ☠️ ☠️ . \n",
     board.render
   end
+
 end

@@ -59,10 +59,11 @@ class Player
       puts "What ye thinkn, landlubber?"
       puts "Ye already blown dis hole"
       cannon_blast(computer_board)
-      end
     end
+  end
 
-    def has_lost?
-      @cruiser.sunk? && @submarine.sunk?
-    end
+  def has_lost?
+    @cruiser.sunk? && @submarine.sunk?
+  end
+  
 end
