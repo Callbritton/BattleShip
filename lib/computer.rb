@@ -39,11 +39,11 @@ class Computer
       @shots_taken << computer_shot
       player_board.cells["#{computer_shot}"].fire_upon
       if player_board.cells["#{computer_shot}"].render == "☠️"
-        puts "Sunk."
+        puts "💀 SUNK! 💀"
       elsif player_board.cells["#{computer_shot}"].render == "H"
-        puts "Hit on #{computer_shot} "
+        puts "💥 HIT! 💥 on #{computer_shot} "
       elsif player_board.cells["#{computer_shot}"].render == "M"
-        puts "Miss on #{computer_shot}"
+        puts "🌊 MISS! 🌊 on #{computer_shot}"
       end
     else
       cannon_blast(player_board)

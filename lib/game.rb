@@ -27,7 +27,7 @@ class Game
     puts "where'bouts are none yer affair."
     puts ""
     puts "Place ye ships wisely"
-    puts "as there be only hav'n two ships."
+    puts "as yous be only hav'n two ships."
     puts "The Cruiser be tree units long,"
     puts "while the submarine be two."
     puts "Here's ye map of tha game."
@@ -57,16 +57,13 @@ class Game
       puts "#{computer.board.render}"
       puts "========================"
       puts " "
+      puts "Computer takes a shot"
+      computer.cannon_blast(player.board)
+      puts " "
       puts "======PLAYER BOARD======"
       puts "#{player.board.render(true)}"
       puts "========================"
       sleep(1)
-      puts "Computer takes a shot"
-      computer.cannon_blast(player.board)
-      puts "======PLAYER BOARD======"
-      puts "#{player.board.render(true)}"
-      puts "========================"
-      puts " "
       unless player.has_lost?
         player.cannon_blast(computer.board)
       end
