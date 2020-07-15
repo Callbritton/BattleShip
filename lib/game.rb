@@ -8,8 +8,8 @@ class Game
 
 
   def start_menu
-    p " ⚓⚓⚓ Welcome to BATTLESHIP ⚓⚓⚓ \n"
-    p " Enter p to play. Enter q to quit"
+    puts " ⚓⚓⚓ Welcome to BATTLESHIP ⚓⚓⚓ \n"
+    puts " Enter p to play. Enter q to quit"
     print ">"
     user_input = gets.chomp.downcase
     if user_input == "p"
@@ -28,7 +28,7 @@ class Game
     puts ""
     puts "Place ye ships wisely"
     puts "as there be only hav'n two ships."
-    puts "The Cruiser be three units long,"
+    puts "The Cruiser be tree units long,"
     puts "while the submarine be two."
     puts "Here's ye map of tha game."
     puts ""
@@ -44,7 +44,7 @@ class Game
     puts "#{player.board.render(true)}"
     puts "========================"
     puts ""
-    sleep(2)
+    sleep(1)
 
     turn
   end
@@ -54,28 +54,31 @@ class Game
     until player.has_lost? || computer.has_lost?
 
       puts "=====COMPUTER BOARD====="
-      puts "#{computer.board.render(true)}"
+      puts "#{computer.board.render}"
       puts "========================"
       puts " "
       puts "======PLAYER BOARD======"
       puts "#{player.board.render(true)}"
       puts "========================"
-      sleep(2)
+      sleep(1)
       puts "Computer takes a shot"
       computer.cannon_blast(player.board)
       puts "======PLAYER BOARD======"
       puts "#{player.board.render(true)}"
       puts "========================"
       puts " "
-      player.cannon_blast(computer.board)
+      unless player.has_lost?
+        player.cannon_blast(computer.board)
+      end
     end
     outcome
-    start_menu # return to start menu
+    start_menu
   end
   def outcome
     if !player.has_lost?
       puts "🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️"
       puts "Yar how could ya beat me computer."
+      puts "You WIN!"
     else
       puts "Down to Davey Jones' locker with ya."
       puts "Computer has won the game!"
