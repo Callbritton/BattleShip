@@ -98,7 +98,7 @@ class BoardTest < Minitest::Test
     coordinates = ["A1", "A2", "A4"]
     refute board.valid_column_spacing?(coordinates)
 
-    coordinates = ["A1", "A3", "A2"] # Ask Nico if his test will pass!
+    coordinates = ["A1", "A3", "A2"]
     refute board.valid_column_spacing?(coordinates)
 
   end
@@ -113,7 +113,7 @@ class BoardTest < Minitest::Test
     coordinates = ["A1", "B1", "D1"]
     refute board.valid_row_spacing?(coordinates)
 
-    coordinates = ["A1", "C1", "B1"] # Ask Nico if his test will pass!
+    coordinates = ["A1", "C1", "B1"]
     refute board.valid_row_spacing?(coordinates)
   end
 

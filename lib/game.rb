@@ -1,9 +1,9 @@
 class Game
-  attr_reader :player, :computer, :board
+  attr_reader :player, :computer#, :board
   def initialize
     @player = Player.new
     @computer = Computer.new
-    @board = Board.new
+    # @board = Board.new
   end
 
 
@@ -27,61 +27,70 @@ class Game
     puts "where'bouts are none yer affair."
     puts ""
     puts "Place ye ships wisely"
-    puts "as there be only hav'n two ships."
+    puts "as yous be only hav'n two ships."
     puts "The Cruiser be tree units long,"
     puts "while the submarine be two."
     puts "Here's ye map of tha game."
     puts ""
-    puts "#{board.render}"
+    puts "#{player.board.render}"
+    puts ""
     puts "Enough jabber'n, ye landlubber! \n"
     puts "It be time to place yer ships!"
     player.place_cruiser
+    puts ""
     puts "Here ye cruiser be"
     puts "#{player.board.render(true)}"
     player.place_submarine
-    puts "Here ye ships be"
+    puts "Here ye submarine be"
+    puts "Gander at ye ships below"
+    puts ""
     puts "======PLAYER BOARD======"
     puts "#{player.board.render(true)}"
     puts "========================"
     puts ""
-    sleep(1)
+    sleep(2.5)
 
     turn
   end
 
   def turn
-    computer.computer_ship_placement
+    computer.computer_cruiser_placement
+    computer.computer_submarine_placement
     until player.has_lost? || computer.has_lost?
 
       puts "=====COMPUTER BOARD====="
       puts "#{computer.board.render}"
       puts "========================"
       puts " "
+      puts "Computer takes a shot"
+      computer.cannon_blast(player.board)
+      puts " "
       puts "======PLAYER BOARD======"
       puts "#{player.board.render(true)}"
       puts "========================"
       sleep(1)
-      puts "Computer takes a shot"
-      computer.cannon_blast(player.board)
-      puts "======PLAYER BOARD======"
-      puts "#{player.board.render(true)}"
-      puts "========================"
-      puts " "
       unless player.has_lost?
         player.cannon_blast(computer.board)
       end
     end
+
     outcome
     start_menu
   end
   def outcome
     if !player.has_lost?
-      puts "🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️"
-      puts "Yar how could ya beat me computer."
-      puts "You WIN!"
+      puts "=====COMPUTER BOARD====="
+      puts "#{computer.board.render}"
+      puts "========================"
+      puts ""
+      puts "Yar, how could ya beat me computer."
+      puts "🔱 🔱 🔱 YAR WIN!  🔱 🔱 🔱"
+      puts ""
     else
       puts "Down to Davey Jones' locker with ya."
-      puts "Computer has won the game!"
+      puts "🦑 🦑 🦑 YAR LOST 🦑 🦑 🦑"
+      puts "Me computer has won da booty!"
+      puts ""
     end
   end
 end

@@ -23,8 +23,7 @@ class GameTest < Minitest::Test
     game = Game.new
 
     clear_board = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
-    assert_equal clear_board, game.board.render
+    assert_equal clear_board, game.player.board.render
   end
-
 
 end

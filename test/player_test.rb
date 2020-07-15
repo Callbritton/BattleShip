@@ -10,50 +10,44 @@ require './lib/computer'
 class PlayerTest < Minitest::Test
 
   def test_it_exists
-    skip
+    # skip
     player1 = Player.new
 
     assert_instance_of Player, player1
   end
 
-  def test_player_can_place_cruisers
-    skip
-    player1 = Player.new
-    cruiser = player1.cruiser
+  # def test_player_can_place_cruisers
+  #   # skip
+  #   player1 = Player.new
+  #   cruiser = player1.cruiser
+  #
+  #   # this test is not dynamic - the assertion is only true
+  #   # if user input matches (tests the desired functionality
+  #   # all the same).
+  #
+  #   assert_equal ["A1", "A2", "A3"], player1.place_cruiser
+  # end
 
-    # this test is not dynamic - the assertion is only true
-    # if user input matches (tests the desired functionality
-    # all the same).
+  # def test_player_can_place_submarines
+  #   # skip
+  #   player1 = Player.new
+  #   submarine = player1.submarine
+  #
+  #   # this test is not dynamic - the assertion is only true
+  #   # if user input matches (tests the desired functionality
+  #   # all the same).
+  #   assert_equal ["A1", "A2"], player1.place_submarine
+  # end
 
-    assert_equal ["A1", "A2", "A3"], player1.place_cruiser
-  end
-
-  def test_player_can_place_submarines
-    skip
-    player1 = Player.new
-    submarine = player1.submarine
-
-    # this test is not dynamic - the assertion is only true
-    # if user input matches (tests the desired functionality
-    # all the same).
-    assert_equal ["A1", "A2"], player1.place_submarine
-  end
-
-  def test_cannon_blast_can_get_coordinates
-    skip
-    player1 = Player.new
-
-    assert_equal ["A1"], player1.cannon_blast
-  end
-
-  def test_if_cannon_blast_fires
-    # skip
+  def test_player_can_lose
     player = Player.new
-    computer = Computer.new
-    submarine = Ship.new("Submarine", 2)
 
-    player.board.place(submarine, ["C2", "C3"])
-    # computer.board.place(submarine, ["A1", "A2:"])
-    player.cannon_blast(computer.board)
+    assert_equal false, player.has_lost?
+
+    3.times do player.cruiser.hit end
+    2.times do player.submarine.hit end
+
+    assert_equal true, player.has_lost?
   end
+
 end

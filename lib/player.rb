@@ -44,16 +44,16 @@ class Player
     puts ""
 
     player_shot = gets.chomp.upcase
-
+    puts ""
     if board.valid_coordinate?(player_shot) && !@shots_taken.include?(player_shot)
       @shots_taken << player_shot
       computer_board.cells[player_shot].fire_upon
       if computer_board.cells[player_shot].render == "☠️"
-        puts "Sunk."
+        puts "💀 SUNK! 💀 on #{player_shot}"
       elsif computer_board.cells[player_shot].render == "H"
-        puts "Hit!"
+        puts "💥 HIT! 💥 on #{player_shot}"
       elsif computer_board.cells[player_shot].render == "M"
-        puts "Miss."
+        puts "🌊 MISS! 🌊 on #{player_shot}"
       end
     else
       puts "What ye thinkn, landlubber?"
