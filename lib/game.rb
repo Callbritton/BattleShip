@@ -83,8 +83,8 @@ class Game
       puts "#{computer.board.render}"
       puts "========================"
       puts ""
-      puts "Yar, how could ya beat me computer."
-      puts "🔱 🔱 🔱 YAR WIN!  🔱 🔱 🔱"
+      puts "How could ya beat me computer."
+      puts "🔱 🔱 🔱 YAR WIN! 🔱 🔱 🔱"
       puts ""
     else
       puts "Down to Davey Jones' locker with ya."
