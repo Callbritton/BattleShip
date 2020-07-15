@@ -5,12 +5,10 @@ class Computer
     @cruiser = Ship.new('Crusier', 3)
     @submarine = Ship.new("Submarine", 2)
     @board = Board.new
+    @shots_taken = []
   end
 
   def computer_ship_placement
-    #if baseline random placement
-    # iterate over ships to place each ship
-    # submarine_starts_invalid(ships[1], ["A1", "D4"])
     loop do
       cruiser_coordinates = []
       3.times do |coordinate|
@@ -35,15 +33,24 @@ class Computer
     end
   end
 
-  def cannon_blast
-    pirate_shot = @board.cells.keys.sample
-    @board.cells["#{pirate_shot}"].fire_upon
-    if @board.cells["#{pirate_shot}"].render == "☠️"
-      puts "Sunk #{board.ship}."
-    elsif @board.cells["#{pirate_shot}"].render == "💥"
-      puts "Hit!"
-    elsif @board.cells["#{pirate_shot}"].render == "M"
-      puts "Miss."
+  def cannon_blast(player_board)
+    computer_shot = @board.cells.keys.sample
+    if !@shots_taken.include?(computer_shot)
+      @shots_taken << computer_shot
+      player_board.cells["#{computer_shot}"].fire_upon
+      if player_board.cells["#{computer_shot}"].render == "☠️"
+        puts "Sunk."
+      elsif player_board.cells["#{computer_shot}"].render == "H"
+        puts "Hit on #{computer_shot} "
+      elsif player_board.cells["#{computer_shot}"].render == "M"
+        puts "Miss on #{computer_shot}"
+      end
+    else
+      cannon_blast(player_board)
     end
+  end
+
+  def has_lost?
+    @cruiser.sunk? && @submarine.sunk?
   end
 end
