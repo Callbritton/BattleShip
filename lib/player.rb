@@ -37,7 +37,7 @@ class Player
     end
   end
 
-  def cannon_blast
+  def cannon_blast(computer_board)
     puts "Now tis yer turn to fire!"
     puts "Hit me if ye can, landlubber!"
 

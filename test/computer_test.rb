@@ -5,7 +5,7 @@ require './lib/cell'
 require './lib/board'
 require './lib/game'
 require './lib/computer'
-# require './lib/player'
+require './lib/player'
 
 class ComputerTest < Minitest::Test
 
@@ -85,10 +85,11 @@ class ComputerTest < Minitest::Test
   def test_shots_return_💥_or_miss
     computer = Computer.new
     submarine = Ship.new("Submarine", 2)
+    player = Player.new
 
     computer.board.place(submarine, ["C2", "C3"])
-    computer.cannon_blast
-  
+    computer.cannon_blast(player_board)
+
 
   end
 end

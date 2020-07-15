@@ -55,7 +55,7 @@ class Game
       puts "#{player.board.render(true)}"
       puts " "
       puts "Computer takes a shot"
-      computer.cannon_blast
+      cannon_blast(player_board)
       puts "#{player.board.render(true)}"
       puts " "
       player.cannon_blast
