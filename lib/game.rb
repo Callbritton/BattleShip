@@ -14,6 +14,8 @@ class Game
       instructions
     elsif user_input == "q"
       puts "Fare thee well, Scallywag"
+    else
+      start_menu
     end
   end
 
