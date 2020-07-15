@@ -54,7 +54,6 @@ class PlayerTest < Minitest::Test
 
     player.board.place(submarine, ["C2", "C3"])
     # computer.board.place(submarine, ["A1", "A2:"])
-    player.cannon_blast
+    player.cannon_blast(computer.board)
   end
-
 end
