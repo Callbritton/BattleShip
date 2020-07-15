@@ -87,17 +87,16 @@ class CellTest < Minitest::Test
   end
 
   def test_it_renders_if_sunk
-    #skip
-    cell_1 = Cell.new("B4")
+    # skip
+    cell_1 = Cell.new("B1")
     cruiser = Ship.new("Cruiser", 3)
 
     cell_1.place_ship(cruiser)
     cell_1.fire_upon
     assert_equal false, cruiser.sunk?
-    2.times do cell_1.fire_upon end
-    assert_equal "X", cell_1.render
+    2.times do cruiser.hit end
+    assert_equal "☠️", cell_1.render
     assert_equal true, cruiser.sunk?
   end
-end
 
-# to be deleted. For commit purposes.
+end
