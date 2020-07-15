@@ -8,10 +8,10 @@ class Computer
     @shots_taken = []
   end
 
-  def computer_ship_placement
+  def computer_cruiser_placement
     loop do
       cruiser_coordinates = []
-      3.times do |coordinate|
+      cruiser.length.times do |coordinate|
         cruiser_coordinates << @board.cells.keys.sample
       end
       if
@@ -20,9 +20,12 @@ class Computer
         break
       end
     end
+  end
+
+  def computer_submarine_placement
     loop do
       submarine_coordinates = []
-      2.times do |coordinate|
+      submarine.length.times do |coordinate|
         submarine_coordinates << @board.cells.keys.sample
       end
       if

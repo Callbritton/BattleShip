@@ -50,7 +50,8 @@ class Game
   end
 
   def turn
-    computer.computer_ship_placement
+    computer.computer_cruiser_placement
+    computer.computer_submarine_placement
     until player.has_lost? || computer.has_lost?
 
       puts "=====COMPUTER BOARD====="
