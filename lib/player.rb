@@ -5,10 +5,11 @@ class Player
     @board = Board.new
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
+    @shots_taken = []
   end
 
   def place_cruiser
-    puts "Yar gonna need to give me tree coordinates..."
+    puts "Yar gonna need to give me TREE coordinates..."
     puts ""
     print "> "
     coordinates = gets.chomp.upcase.split(" ")
@@ -17,13 +18,13 @@ class Player
       board.place(cruiser, coordinates)
     else
       puts "***Wrong coordinates, landlubber!*** \n"
-      puts "***I need tree coordinates...***"
+      puts "***I need TREE coordinates...***"
       place_cruiser
     end
   end
 
   def place_submarine
-    puts "Yar gonna need to give me two coordinates..."
+    puts "Yar gonna need to give me TWO coordinates..."
     puts ""
     print "> "
     coordinates = gets.chomp.upcase.split(" ")
@@ -32,7 +33,7 @@ class Player
       board.place(submarine, coordinates)
     else
       puts "***Wrong coordinates, landlubber!*** \n"
-      puts "***I need two coordinates...***"
+      puts "***I need TWO coordinates...***"
       place_submarine
     end
   end
@@ -40,25 +41,28 @@ class Player
   def cannon_blast(computer_board)
     puts "Now tis yer turn to fire!"
     puts "Hit me if ye can, landlubber!"
+    puts ""
 
     player_shot = gets.chomp.upcase
 
-    if board.valid_coordinate?(player_shot)
-      board.cells[player_shot].fire_upon
-      if board.cells[player_shot].render == "☠️"
-        puts "Sunk #{board.ship}."
-      elsif board.cells[player_shot].render == "💥"
+    if board.valid_coordinate?(player_shot) && !@shots_taken.include?(player_shot)
+      @shots_taken << player_shot
+      computer_board.cells[player_shot].fire_upon
+      if computer_board.cells[player_shot].render == "☠️"
+        puts "Sunk."
+      elsif computer_board.cells[player_shot].render == "H"
         puts "Hit!"
-      elsif board.cells[player_shot].render == "M"
+      elsif computer_board.cells[player_shot].render == "M"
         puts "Miss."
       end
     else
       puts "What ye thinkn, landlubber?"
-      cannon_blast
+      puts "Ye already blown dis hole"
+      cannon_blast(computer_board)
       end
     end
 
     def has_lost?
-      @cruiser.health == 0 && @submarine.health == 0
+      @cruiser.sunk? && @submarine.sunk?
     end
 end

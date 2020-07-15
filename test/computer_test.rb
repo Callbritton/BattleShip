@@ -49,7 +49,7 @@ class ComputerTest < Minitest::Test
 
     computer.board.place(cruiser, ["D1", "D2", "D3"])
     computer.board.cells["D1"].fire_upon
-    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD 💥 . . . \n",
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD H . . . \n",
     computer.board.render
   end
 
@@ -62,7 +62,7 @@ class ComputerTest < Minitest::Test
     computer.board.place(cruiser, ["D1", "D2", "D3"])
     computer.board.cells["D1"].fire_upon
     computer.board.cells["D2"].fire_upon
-    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD 💥 💥 . . \n",
+    assert_equal "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD H H . . \n",
     computer.board.render
 
     computer.board.cells["D3"].fire_upon
@@ -82,13 +82,13 @@ class ComputerTest < Minitest::Test
     computer.board.render
   end
 
-  def test_shots_return_💥_or_miss
+  def test_shots_return_H_or_miss
     computer = Computer.new
     submarine = Ship.new("Submarine", 2)
     player = Player.new
 
     computer.board.place(submarine, ["C2", "C3"])
-    computer.cannon_blast(player_board)
+    computer.cannon_blast(player.board)
 
 
   end
