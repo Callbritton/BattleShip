@@ -5,6 +5,7 @@ class Computer
     @cruiser = Ship.new('Crusier', 3)
     @submarine = Ship.new("Submarine", 2)
     @board = Board.new
+    @shots_taken = []
   end
 
   def computer_ship_placement
@@ -34,13 +35,18 @@ class Computer
 
   def cannon_blast(player_board)
     computer_shot = @board.cells.keys.sample
-    player_board.cells["#{computer_shot}"].fire_upon
-    if player_board.cells["#{computer_shot}"].render == "☠️"
-      puts "Sunk."
-    elsif player_board.cells["#{computer_shot}"].render == "💥"
-      puts "Hit on #{computer_shot} "
-    elsif player_board.cells["#{computer_shot}"].render == "M"
-      puts "Miss on #{computer_shot}"
+    if !@shots_taken.include?(computer_shot)
+      @shots_taken << computer_shot
+      player_board.cells["#{computer_shot}"].fire_upon
+      if player_board.cells["#{computer_shot}"].render == "☠️"
+        puts "Sunk."
+      elsif player_board.cells["#{computer_shot}"].render == "H"
+        puts "Hit on #{computer_shot} "
+      elsif player_board.cells["#{computer_shot}"].render == "M"
+        puts "Miss on #{computer_shot}"
+      end
+    else
+      cannon_blast(player_board)
     end
   end
 
